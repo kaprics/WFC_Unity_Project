@@ -155,7 +155,7 @@ MonoBehaviour:
   gridSizeX: 100
   gridSizeY: 50
   tilePrefab: {fileID: 9063935643566990535, guid: bacd5b8bbabfecb458981e0e13ec6970, type: 3}
-  tilesAtATime: 1
+  tilesAtATime: 20
 --- !u!4 &1221614048
 Transform:
   m_ObjectHideFlags: 0

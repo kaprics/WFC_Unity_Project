@@ -21,4 +21,9 @@ public class Tile : MonoBehaviour
         finalModuleRules = possibleModules[Random.Range(0, possibleModules.Count)];
         Instantiate(finalModuleRules.gfx, transform.position, Quaternion.identity);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, Vector3.one * 0.5f);
+    }
 }
