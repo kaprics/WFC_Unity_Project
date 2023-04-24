@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 224046f2748f469886f2199053f9f11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
+  modRules:
+    modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
+    propability: 1
 --- !u!1001 &2043456398325180503
 PrefabInstance:
   m_ObjectHideFlags: 0

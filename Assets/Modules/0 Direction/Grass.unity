@@ -643,6 +643,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2663822144703267965, guid: 071dad7076017064ba08782d261d9ee3, type: 3}
+      propertyPath: modRules.modRules
+      value: 
+      objectReference: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
+    - target: {fileID: 2663822144703267965, guid: 071dad7076017064ba08782d261d9ee3, type: 3}
+      propertyPath: modRules.propability
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4610050794188354238, guid: 071dad7076017064ba08782d261d9ee3, type: 3}
       propertyPath: m_Name
       value: Road_Down
