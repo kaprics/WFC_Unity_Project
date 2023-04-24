@@ -15,6 +15,7 @@ MonoBehaviour:
   name: 
   gfx: {fileID: 448182281039823092, guid: 0ef7b5e928f99474086eaa3fa8c02b43, type: 3}
   up:
+  - {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
   - {fileID: 11400000, guid: 62d2392f6a49f4d4ca445c8005d3efd5, type: 2}
   - {fileID: 11400000, guid: dbec99fbbf9a5cb49b350352df5ec03e, type: 2}
   - {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
@@ -29,6 +30,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03ef75d472faf224e93c93e5e0e27aed, type: 2}
   - {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
   left:
+  - {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
   - {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
   - {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
   - {fileID: 11400000, guid: 0b180e3f601c59f43a1117f435fa49a2, type: 2}
