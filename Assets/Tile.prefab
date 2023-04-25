@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894df0e1253802e4a94e8898be38f94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  x: 0
+  y: 0
   finalModuleRules: {fileID: 0}
   possibleModules:
   - modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
-    propability: 111
+    propability: 1
   - modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
     propability: 1
   - modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
@@ -73,3 +75,4 @@ MonoBehaviour:
   - modRules: {fileID: 11400000, guid: 03ef75d472faf224e93c93e5e0e27aed, type: 2}
     propability: 1
   entropy: 0
+  seed: 1

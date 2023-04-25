@@ -6,20 +6,28 @@ using Random = UnityEngine.Random;
 public class Tile : MonoBehaviour
 {
     public (int x, int y) coordinates;
+    public int x;
+    public int y;
     [FormerlySerializedAs("finalModule")] public ModuleRules finalModuleRules;
     public List<Mods> possibleModules = new List<Mods>();
     public float entropy;
+    public int seed;
 
     private void Awake()
     {
-        Random.InitState(1);
+        Random.InitState(seed);
         entropy = Mathf.Infinity;
     }
 
     public void Collapse()
     {
-        finalModuleRules = possibleModules[GetRandomModuleWeighted(possibleModules.ToArray())].modRules;
+        var possibleModule = possibleModules[GetRandomModuleWeighted(possibleModules.ToArray())];
+        finalModuleRules = possibleModule.modRules;
+        possibleModules.Clear();
+        possibleModules.Add(possibleModule);
         Instantiate(finalModuleRules.gfx, transform.position, Quaternion.identity);
+        x = coordinates.x;
+        y = coordinates.y;
     }
 
     private int GetRandomModuleWeighted(Mods[] mods)

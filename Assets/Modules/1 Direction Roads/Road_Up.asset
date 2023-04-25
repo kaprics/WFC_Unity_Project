@@ -23,6 +23,8 @@ MonoBehaviour:
     propability: 1
   - modRules: {fileID: 11400000, guid: 51cd0422ccfbdb74d9ccac592b8467ea, type: 2}
     propability: 1
+  - modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
+    propability: 1
   - modRules: {fileID: 11400000, guid: 0b180e3f601c59f43a1117f435fa49a2, type: 2}
     propability: 1
   down:
