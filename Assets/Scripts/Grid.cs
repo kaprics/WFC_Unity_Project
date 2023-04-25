@@ -60,7 +60,7 @@ public class Grid : MonoBehaviour
             var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.up;
             var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
             tiles[(coordinates.x, coordinates.y + 1)].possibleModules = newPossibleTiles;
-            tiles[(coordinates.x, coordinates.y + 1)].entropy = newPossibleTiles.Count;
+            tiles[(coordinates.x, coordinates.y + 1)].CalculateEntropy();
             if (_tiles.Contains((coordinates.x, coordinates.y + 1)))
             {
                 _tiles.UpdatePriority((coordinates.x, coordinates.y + 1), tiles[(coordinates.x, coordinates.y + 1)].entropy);
@@ -72,7 +72,7 @@ public class Grid : MonoBehaviour
             var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.down;
             var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
             tiles[(coordinates.x, coordinates.y - 1)].possibleModules = newPossibleTiles;
-            tiles[(coordinates.x, coordinates.y - 1)].entropy = newPossibleTiles.Count;
+            tiles[(coordinates.x, coordinates.y - 1)].CalculateEntropy();
             if (_tiles.Contains((coordinates.x, coordinates.y - 1)))
             {
                 _tiles.UpdatePriority((coordinates.x, coordinates.y - 1), tiles[(coordinates.x, coordinates.y - 1)].entropy);
@@ -84,7 +84,7 @@ public class Grid : MonoBehaviour
             var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.right;
             var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
             tiles[(coordinates.x + 1, coordinates.y)].possibleModules = newPossibleTiles;
-            tiles[(coordinates.x + 1, coordinates.y)].entropy = newPossibleTiles.Count;
+            tiles[(coordinates.x + 1, coordinates.y)].CalculateEntropy();
             if (_tiles.Contains((coordinates.x + 1, coordinates.y)))
             {
                 _tiles.UpdatePriority((coordinates.x + 1, coordinates.y), tiles[(coordinates.x + 1, coordinates.y)].entropy);
@@ -96,7 +96,7 @@ public class Grid : MonoBehaviour
             var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.left;
             var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
             tiles[(coordinates.x - 1, coordinates.y)].possibleModules = newPossibleTiles;
-            tiles[(coordinates.x - 1, coordinates.y)].entropy = newPossibleTiles.Count;
+            tiles[(coordinates.x - 1, coordinates.y)].CalculateEntropy();
             if (_tiles.Contains((coordinates.x - 1, coordinates.y)))
             {
                 _tiles.UpdatePriority((coordinates.x - 1, coordinates.y), tiles[(coordinates.x - 1, coordinates.y)].entropy);

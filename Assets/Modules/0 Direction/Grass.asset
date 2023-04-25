@@ -25,6 +25,8 @@ MonoBehaviour:
     propability: 1
   - modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
     propability: 1
+  - modRules: {fileID: 11400000}
+    propability: 111
   - modRules: {fileID: 11400000, guid: dbec99fbbf9a5cb49b350352df5ec03e, type: 2}
     propability: 1
   down:
@@ -40,11 +42,15 @@ MonoBehaviour:
     propability: 1
   - modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
     propability: 1
+  - modRules: {fileID: 11400000}
+    propability: 111
   left:
   - modRules: {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
     propability: 1
   - modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
     propability: 1
+  - modRules: {fileID: 11400000}
+    propability: 111
   - modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
     propability: 1
   - modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
@@ -60,9 +66,11 @@ MonoBehaviour:
     propability: 1
   - modRules: {fileID: 11400000, guid: 62d2392f6a49f4d4ca445c8005d3efd5, type: 2}
     propability: 1
+  - modRules: {fileID: 11400000}
+    propability: 111
   - modRules: {fileID: 11400000, guid: 03c11b24ada005046bace615ea9f6a72, type: 2}
     propability: 1
-  - modRules: {fileID: 11400000}
+  - modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
     propability: 1
   - modRules: {fileID: 11400000, guid: 51cd0422ccfbdb74d9ccac592b8467ea, type: 2}
     propability: 1

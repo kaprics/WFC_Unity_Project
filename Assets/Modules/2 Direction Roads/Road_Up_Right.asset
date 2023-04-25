@@ -39,7 +39,7 @@ MonoBehaviour:
   - modRules: {fileID: 11400000, guid: c6deeedf3810bea44b0cd7630af8dfd6, type: 2}
     propability: 1
   - modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
-    propability: 1
+    propability: 111
   - modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
     propability: 1
   left:
@@ -47,6 +47,8 @@ MonoBehaviour:
     propability: 1
   - modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
     propability: 1
+  - modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
+    propability: 111
   - modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
     propability: 1
   - modRules: {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
