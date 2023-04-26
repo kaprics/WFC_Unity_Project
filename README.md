@@ -1,2 +1,2 @@
 # WFC
-![](https://github.com/kaprics/WFC/blob/main/WFC.gif)
+![](https://github.com/kaprics/WFC/blob/main/WFC_GIF.gif)
