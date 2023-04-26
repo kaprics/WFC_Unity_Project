@@ -16,79 +16,79 @@ MonoBehaviour:
   up:
   - name: Road_Right_Down
     modRules: {fileID: 11400000, guid: 51cd0422ccfbdb74d9ccac592b8467ea, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Left_Down
     modRules: {fileID: 11400000, guid: 0b180e3f601c59f43a1117f435fa49a2, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Right_Down
     modRules: {fileID: 11400000}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left_Down
     modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Down
     modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Down_Left_Right
     modRules: {fileID: 11400000, guid: c6deeedf3810bea44b0cd7630af8dfd6, type: 2}
-    propability: 1
+    probability: 0
   down:
   - name: Road_Up
     modRules: {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left
     modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left_Right
     modRules: {fileID: 11400000, guid: dbec99fbbf9a5cb49b350352df5ec03e, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left_Down
     modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Right_Down
     modRules: {fileID: 11400000}
-    propability: 1
+    probability: 0
   - name: Road_Up_Right
     modRules: {fileID: 11400000, guid: 62d2392f6a49f4d4ca445c8005d3efd5, type: 2}
-    propability: 1
+    probability: 0
   left:
   - name: Road_Left_Down
     modRules: {fileID: 11400000, guid: 0b180e3f601c59f43a1117f435fa49a2, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left_Down
     modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Left
     modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Down
     modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
-    propability: 1
+    probability: 0
   - name: Grass
     modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
-    propability: 111
+    probability: 0
   - name: Road_Up
     modRules: {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left
     modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
-    propability: 1
+    probability: 0
   right:
   - name: Road_Down_Left_Right
     modRules: {fileID: 11400000, guid: c6deeedf3810bea44b0cd7630af8dfd6, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Left
     modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Left_Down
     modRules: {fileID: 11400000, guid: 0b180e3f601c59f43a1117f435fa49a2, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left_Right
     modRules: {fileID: 11400000, guid: dbec99fbbf9a5cb49b350352df5ec03e, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left_Down
     modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
-    propability: 1
+    probability: 0
   - name: Road_Up_Left
     modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
-    propability: 1
+    probability: 0

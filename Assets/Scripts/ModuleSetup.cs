@@ -15,23 +15,25 @@ public class ModuleSetup : MonoBehaviour
         
         foreach (var m in FindObjectsOfType<Module>())
         {
-            if (m.gameObject.transform.position.z > 0)
+            switch (m.gameObject.transform.position.z)
             {
-                moduleRules.up.Add(m.modRules);
+                case > 0:
+                    moduleRules.up.Add(m.modRules);
+                    break;
+                case < 0:
+                    moduleRules.down.Add(m.modRules);
+                    break;
             }
-            if (m.gameObject.transform.position.z < 0)
+
+            switch (m.gameObject.transform.position.x)
             {
-                moduleRules.down.Add(m.modRules);
+                case > 0:
+                    moduleRules.right.Add(m.modRules);
+                    break;
+                case < 0:
+                    moduleRules.left.Add(m.modRules);
+                    break;
             }
-            if (m.gameObject.transform.position.x > 0)
-            {
-                moduleRules.right.Add(m.modRules);
-            }
-            if (m.gameObject.transform.position.x < 0)
-            {
-                moduleRules.left.Add(m.modRules);
-            }
-            
         }
 
         EditorUtility.SetDirty(moduleRules);

@@ -7,14 +7,13 @@ using Random = UnityEngine.Random;
 
 public class Grid : MonoBehaviour
 {
-    public int gridSizeX;
-    public int gridSizeY;
-    public Tile tilePrefab;
-    public Dictionary<(int x, int y), Tile> tiles = new Dictionary<(int x, int y), Tile>();
-    public SimplePriorityQueue<(int x, int y)> _tiles = new SimplePriorityQueue<(int x, int y)>();
-    public SimplePriorityQueue<(int x, int y)> toPropagate = new();
-    public int tilesAtATime = 1;
-
+    [SerializeField] private int tilesPerStep = 1;
+    [SerializeField] private int gridSizeX;
+    [SerializeField] private int gridSizeY;
+    [SerializeField] private Tile tilePrefab;
+    private readonly Dictionary<(int x, int y), Tile> _tileGrid = new();
+    private readonly SimplePriorityQueue<(int x, int y)> _tilesPriorityQueue = new();
+    
     private void Start()
     {
         InitializeGrid();
@@ -22,145 +21,92 @@ public class Grid : MonoBehaviour
 
     private void InitializeGrid()
     {
-        for (int x = 0; x < gridSizeX; x++)
+        for (var x = 0; x < gridSizeX; x++)
         {
-            for (int y = 0; y < gridSizeY; y++)
+            for (var y = 0; y < gridSizeY; y++)
             {
                 var t = Instantiate(tilePrefab, new Vector3(x, 0, y), Quaternion.identity, transform);
-                t.coordinates = (x, y);
-                tiles.Add((x, y), t);
-                _tiles.Enqueue((x,y), tiles[(x,y)].entropy);
+                t.Coordinates = (x, y);
+                _tileGrid.Add((x, y), t);
+                _tilesPriorityQueue.Enqueue((x,y), _tileGrid[(x,y)].entropy);
             }
         }
 
-        StartCoroutine(WFC());
+        StartCoroutine(Wfc());
     }
 
-    private IEnumerator WFC()
+    private IEnumerator Wfc()
     {
         yield return new WaitForFixedUpdate();
         var rand = (Random.Range(0, gridSizeX), Random.Range(0, gridSizeY));
-        _tiles.UpdatePriority(rand, 0);
+        _tilesPriorityQueue.UpdatePriority(rand, 0);
         
-        for (int i = 0; i < gridSizeX*gridSizeY; i++)
+        for (var i = 0; i < gridSizeX*gridSizeY; i++)
         {
-            if (i % tilesAtATime == 0)
+            if (i % tilesPerStep == 0)
             {
                 yield return new WaitForFixedUpdate();
             }
-            var coordinates = _tiles.Dequeue();
-            tiles[coordinates].Collapse();
+            var coordinates = _tilesPriorityQueue.Dequeue();
+            _tileGrid[coordinates].Collapse();
             UpdateConstraints(coordinates);
         }
     }
-
-    // TODO: That's a lotta duplicate code lol
+    
     private void UpdateConstraints((int x, int y) coordinates)
     {
         var queue = new Queue<Tile>();
-        queue.Enqueue(tiles[(coordinates.x, coordinates.y)]);
+        queue.Enqueue(_tileGrid[(coordinates.x, coordinates.y)]);
 
         while (queue.Count > 0)
         {
             var currentTile = queue.Dequeue();
-            var neighbours = GetNeighbours(currentTile.coordinates);
+            var neighbours = GetNeighbours(currentTile.Coordinates);
 
-            if (neighbours[0] != (-1, -1))
+            PropagateConstraints(neighbours[0], 0, queue, currentTile);
+            PropagateConstraints(neighbours[1], 1, queue, currentTile);
+            PropagateConstraints(neighbours[2], 2, queue, currentTile);
+            PropagateConstraints(neighbours[3], 3, queue, currentTile);
+        }
+    }
+
+    private void PropagateConstraints((int x, int y) neighbourCoordinates, int index, Queue<Tile> queue, Tile currentTile)
+    {
+        if (neighbourCoordinates == (-1, -1)) return;
+        var legalTiles = new List<Mods>();
+
+        foreach (var mods in currentTile.possibleModules)
+        {
+            switch (index)
             {
-                var legalTiles = new List<Mods>();
-
-                foreach (var mods in currentTile.possibleModules)
-                {
+                case 0:
                     legalTiles.AddRange(mods.modRules.up);
-                }
-
-                legalTiles = legalTiles.Distinct().ToList();
-
-                var oldCount = tiles[neighbours[0]].possibleModules.Count;
-                tiles[neighbours[0]].possibleModules = tiles[neighbours[0]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
-                tiles[neighbours[0]].CalculateEntropy();
-                if(_tiles.Contains(neighbours[0]))
-                    _tiles.UpdatePriority(neighbours[0], tiles[neighbours[0]].entropy);
-                var newCount = tiles[neighbours[0]].possibleModules.Count;
-
-                if (oldCount != newCount)
-                {
-                    if(tiles[neighbours[0]].finalModuleRules != null) continue;
-                    queue.Enqueue(tiles[neighbours[0]]);
-                }
-            }
-            if (neighbours[1] != (-1, -1))
-            {
-                var legalTiles = new List<Mods>();
-
-                foreach (var mods in currentTile.possibleModules)
-                {
+                    break;
+                case 1:
                     legalTiles.AddRange(mods.modRules.down);
-                }
-                
-                legalTiles = legalTiles.Distinct().ToList();
-
-                var oldCount = tiles[neighbours[1]].possibleModules.Count;
-                tiles[neighbours[1]].possibleModules = tiles[neighbours[1]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
-                tiles[neighbours[1]].CalculateEntropy();
-                if(_tiles.Contains(neighbours[1]))
-                    _tiles.UpdatePriority(neighbours[1], tiles[neighbours[1]].entropy);
-                var newCount = tiles[neighbours[1]].possibleModules.Count;
-
-                if (oldCount != newCount)
-                {
-                    if(tiles[neighbours[1]].finalModuleRules != null) continue;
-                    queue.Enqueue(tiles[neighbours[1]]);
-                }
-            }
-            if (neighbours[2] != (-1, -1))
-            {
-                var legalTiles = new List<Mods>();
-
-                foreach (var mods in currentTile.possibleModules)
-                {
+                    break;
+                case 2:
                     legalTiles.AddRange(mods.modRules.right);
-                }
-                
-                legalTiles = legalTiles.Distinct().ToList();
-
-                var oldCount = tiles[neighbours[2]].possibleModules.Count;
-                tiles[neighbours[2]].possibleModules = tiles[neighbours[2]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
-                tiles[neighbours[2]].CalculateEntropy();
-                if(_tiles.Contains(neighbours[2]))
-                    _tiles.UpdatePriority(neighbours[2], tiles[neighbours[2]].entropy);
-                var newCount = tiles[neighbours[2]].possibleModules.Count;
-
-                if (oldCount != newCount)
-                {
-                    if(tiles[neighbours[2]].finalModuleRules != null) continue;
-                    queue.Enqueue(tiles[neighbours[2]]);
-                }
-            }
-            if (neighbours[3] != (-1, -1))
-            {
-                var legalTiles = new List<Mods>();
-
-                foreach (var mods in currentTile.possibleModules)
-                {
+                    break;
+                case 3:
                     legalTiles.AddRange(mods.modRules.left);
-                }
-                
-                legalTiles = legalTiles.Distinct().ToList();
-
-                var oldCount = tiles[neighbours[3]].possibleModules.Count;
-                tiles[neighbours[3]].possibleModules = tiles[neighbours[3]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
-                tiles[neighbours[3]].CalculateEntropy();
-                if(_tiles.Contains(neighbours[3]))
-                    _tiles.UpdatePriority(neighbours[3], tiles[neighbours[3]].entropy);
-                var newCount = tiles[neighbours[3]].possibleModules.Count;
-
-                if (oldCount != newCount)
-                {
-                    if(tiles[neighbours[3]].finalModuleRules != null) continue;
-                    queue.Enqueue(tiles[neighbours[3]]);
-                }
+                    break;
             }
+        }
+                
+        legalTiles = legalTiles.Distinct().ToList();
+
+        var oldCount = _tileGrid[neighbourCoordinates].possibleModules.Count;
+        _tileGrid[neighbourCoordinates].possibleModules = _tileGrid[neighbourCoordinates].possibleModules.Intersect(legalTiles, new Mods()).ToList();
+        _tileGrid[neighbourCoordinates].CalculateEntropy();
+        if(_tilesPriorityQueue.Contains(neighbourCoordinates))
+            _tilesPriorityQueue.UpdatePriority(neighbourCoordinates, _tileGrid[neighbourCoordinates].entropy);
+        var newCount = _tileGrid[neighbourCoordinates].possibleModules.Count;
+
+        if (oldCount != newCount)
+        {
+            if(_tileGrid[neighbourCoordinates].finalModuleRules != null) return;
+            queue.Enqueue(_tileGrid[neighbourCoordinates]);
         }
     }
 
@@ -168,13 +114,13 @@ public class Grid : MonoBehaviour
     {
         var neighbours = new List<(int x, int y)>();
         
-        if(tiles.ContainsKey((coordinates.x, coordinates.y + 1)) && tiles[(coordinates.x, coordinates.y + 1)].finalModuleRules == null) neighbours.Add((coordinates.x, coordinates.y + 1));
+        if(_tileGrid.ContainsKey((coordinates.x, coordinates.y + 1)) && _tileGrid[(coordinates.x, coordinates.y + 1)].finalModuleRules == null) neighbours.Add((coordinates.x, coordinates.y + 1));
         else neighbours.Add((-1, -1));
-        if(tiles.ContainsKey((coordinates.x, coordinates.y - 1)) && tiles[(coordinates.x, coordinates.y - 1)].finalModuleRules == null) neighbours.Add((coordinates.x, coordinates.y - 1));
+        if(_tileGrid.ContainsKey((coordinates.x, coordinates.y - 1)) && _tileGrid[(coordinates.x, coordinates.y - 1)].finalModuleRules == null) neighbours.Add((coordinates.x, coordinates.y - 1));
         else neighbours.Add((-1, -1));
-        if(tiles.ContainsKey((coordinates.x + 1, coordinates.y)) && tiles[(coordinates.x + 1, coordinates.y)].finalModuleRules == null) neighbours.Add((coordinates.x + 1, coordinates.y));
+        if(_tileGrid.ContainsKey((coordinates.x + 1, coordinates.y)) && _tileGrid[(coordinates.x + 1, coordinates.y)].finalModuleRules == null) neighbours.Add((coordinates.x + 1, coordinates.y));
         else neighbours.Add((-1, -1));
-        if(tiles.ContainsKey((coordinates.x - 1, coordinates.y)) && tiles[(coordinates.x - 1, coordinates.y)].finalModuleRules == null) neighbours.Add((coordinates.x - 1, coordinates.y));
+        if(_tileGrid.ContainsKey((coordinates.x - 1, coordinates.y)) && _tileGrid[(coordinates.x - 1, coordinates.y)].finalModuleRules == null) neighbours.Add((coordinates.x - 1, coordinates.y));
         else neighbours.Add((-1, -1));
 
         return neighbours;

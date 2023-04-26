@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +6,10 @@ public class ModuleRules : ScriptableObject
 {
     public GameObject gfx;
 
-    public List<Mods> up = new List<Mods>();
-    public List<Mods> down = new List<Mods>();
-    public List<Mods> left = new List<Mods>();
-    public List<Mods> right = new List<Mods>();
+    public List<Mods> up = new();
+    public List<Mods> down = new();
+    public List<Mods> left = new();
+    public List<Mods> right = new();
 }
 
 [System.Serializable]
@@ -18,7 +17,7 @@ public struct Mods : IEqualityComparer<Mods>
 {
     public string name;
     public ModuleRules modRules;
-    public float propability;
+    public float probability;
 
     public bool Equals(Mods x, Mods y)
     {

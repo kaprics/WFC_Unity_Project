@@ -1,22 +1,17 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+// ReSharper disable CompareOfFloatsByEqualityOperator
 
 public class Tile : MonoBehaviour
 {
-    public (int x, int y) coordinates;
-    public int x;
-    public int y;
-    [FormerlySerializedAs("finalModule")] public ModuleRules finalModuleRules;
-    public List<Mods> possibleModules = new List<Mods>();
+    public (int x, int y) Coordinates;
+    public ModuleRules finalModuleRules;
+    public List<Mods> possibleModules = new();
     public float entropy;
-    public int seed;
 
     private void Awake()
     {
-        Random.InitState(seed);
         entropy = Mathf.Infinity;
     }
 
@@ -27,30 +22,28 @@ public class Tile : MonoBehaviour
         possibleModules.Clear();
         possibleModules.Add(possibleModule);
         Instantiate(finalModuleRules.gfx, transform.position, Quaternion.identity);
-        x = coordinates.x;
-        y = coordinates.y;
     }
 
     private int GetRandomModuleWeighted(Mods[] mods)
     {
         float weightSum = 0f;
 
-        for (int i = 0; i < mods.Length; i++)
+        for (var i = 0; i < mods.Length; i++)
         {
-            weightSum += mods[i].propability;
+            weightSum += mods[i].probability;
         }
 
-        int index = 0;
-        int lastIndex = mods.Length - 1;
+        var index = 0;
+        var lastIndex = mods.Length - 1;
 
         while (index < lastIndex)
         {
-            if (Random.Range(0, weightSum) < mods[index].propability)
+            if (Random.Range(0, weightSum) < mods[index].probability)
             {
                 return index;
             }
 
-            weightSum -= mods[index++].propability;
+            weightSum -= mods[index++].probability;
         }
 
         return index;
@@ -61,8 +54,8 @@ public class Tile : MonoBehaviour
         var sum = 0f;
         foreach (var module in possibleModules)
         {
-            if (module.propability == 1) sum += 1;
-            else sum += module.propability * Mathf.Log(module.propability);
+            if (module.probability == 1) sum += 1;
+            else sum += module.probability * Mathf.Log(module.probability);
         }
         entropy = sum;
     }
