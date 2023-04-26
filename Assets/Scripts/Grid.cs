@@ -57,56 +57,6 @@ public class Grid : MonoBehaviour
     // TODO: That's a lotta duplicate code lol
     private void UpdateConstraints((int x, int y) coordinates)
     {
-        // if (tiles.ContainsKey((coordinates.x, coordinates.y + 1)))
-        // {
-        //     var neighbourTiles = tiles[(coordinates.x, coordinates.y + 1)].possibleModules;
-        //     var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.up;
-        //     var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
-        //     tiles[(coordinates.x, coordinates.y + 1)].possibleModules = newPossibleTiles;
-        //     tiles[(coordinates.x, coordinates.y + 1)].CalculateEntropy();
-        //     if (_tiles.Contains((coordinates.x, coordinates.y + 1)))
-        //     {
-        //         _tiles.UpdatePriority((coordinates.x, coordinates.y + 1), tiles[(coordinates.x, coordinates.y + 1)].entropy);
-        //     }
-        // }
-        // if (tiles.ContainsKey((coordinates.x, coordinates.y - 1)))
-        // {
-        //     var neighbourTiles = tiles[(coordinates.x, coordinates.y - 1)].possibleModules;
-        //     var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.down;
-        //     var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
-        //     tiles[(coordinates.x, coordinates.y - 1)].possibleModules = newPossibleTiles;
-        //     tiles[(coordinates.x, coordinates.y - 1)].CalculateEntropy();
-        //     if (_tiles.Contains((coordinates.x, coordinates.y - 1)))
-        //     {
-        //         _tiles.UpdatePriority((coordinates.x, coordinates.y - 1), tiles[(coordinates.x, coordinates.y - 1)].entropy);
-        //     }
-        // }
-        // if (tiles.ContainsKey((coordinates.x + 1, coordinates.y)))
-        // {
-        //     var neighbourTiles = tiles[(coordinates.x + 1, coordinates.y)].possibleModules;
-        //     var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.right;
-        //     var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
-        //     tiles[(coordinates.x + 1, coordinates.y)].possibleModules = newPossibleTiles;
-        //     tiles[(coordinates.x + 1, coordinates.y)].CalculateEntropy();
-        //     if (_tiles.Contains((coordinates.x + 1, coordinates.y)))
-        //     {
-        //         _tiles.UpdatePriority((coordinates.x + 1, coordinates.y), tiles[(coordinates.x + 1, coordinates.y)].entropy);
-        //     }
-        // }
-        // if (tiles.ContainsKey((coordinates.x - 1, coordinates.y)))
-        // {
-        //     var neighbourTiles = tiles[(coordinates.x - 1, coordinates.y)].possibleModules;
-        //     var myTiles = tiles[(coordinates.x, coordinates.y)].finalModuleRules.left;
-        //     var newPossibleTiles = neighbourTiles.Intersect(myTiles).ToList();
-        //     tiles[(coordinates.x - 1, coordinates.y)].possibleModules = newPossibleTiles;
-        //     tiles[(coordinates.x - 1, coordinates.y)].CalculateEntropy();
-        //     if (_tiles.Contains((coordinates.x - 1, coordinates.y)))
-        //     {
-        //         _tiles.UpdatePriority((coordinates.x - 1, coordinates.y), tiles[(coordinates.x - 1, coordinates.y)].entropy);
-        //     }
-        //
-        // }
-
         var queue = new Queue<Tile>();
         queue.Enqueue(tiles[(coordinates.x, coordinates.y)]);
 
@@ -127,7 +77,7 @@ public class Grid : MonoBehaviour
                 legalTiles = legalTiles.Distinct().ToList();
 
                 var oldCount = tiles[neighbours[0]].possibleModules.Count;
-                tiles[neighbours[0]].possibleModules = tiles[neighbours[0]].possibleModules.Intersect(legalTiles).ToList();
+                tiles[neighbours[0]].possibleModules = tiles[neighbours[0]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
                 tiles[neighbours[0]].CalculateEntropy();
                 if(_tiles.Contains(neighbours[0]))
                     _tiles.UpdatePriority(neighbours[0], tiles[neighbours[0]].entropy);
@@ -151,7 +101,7 @@ public class Grid : MonoBehaviour
                 legalTiles = legalTiles.Distinct().ToList();
 
                 var oldCount = tiles[neighbours[1]].possibleModules.Count;
-                tiles[neighbours[1]].possibleModules = tiles[neighbours[1]].possibleModules.Intersect(legalTiles).ToList();
+                tiles[neighbours[1]].possibleModules = tiles[neighbours[1]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
                 tiles[neighbours[1]].CalculateEntropy();
                 if(_tiles.Contains(neighbours[1]))
                     _tiles.UpdatePriority(neighbours[1], tiles[neighbours[1]].entropy);
@@ -175,7 +125,7 @@ public class Grid : MonoBehaviour
                 legalTiles = legalTiles.Distinct().ToList();
 
                 var oldCount = tiles[neighbours[2]].possibleModules.Count;
-                tiles[neighbours[2]].possibleModules = tiles[neighbours[2]].possibleModules.Intersect(legalTiles).ToList();
+                tiles[neighbours[2]].possibleModules = tiles[neighbours[2]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
                 tiles[neighbours[2]].CalculateEntropy();
                 if(_tiles.Contains(neighbours[2]))
                     _tiles.UpdatePriority(neighbours[2], tiles[neighbours[2]].entropy);
@@ -199,7 +149,7 @@ public class Grid : MonoBehaviour
                 legalTiles = legalTiles.Distinct().ToList();
 
                 var oldCount = tiles[neighbours[3]].possibleModules.Count;
-                tiles[neighbours[3]].possibleModules = tiles[neighbours[3]].possibleModules.Intersect(legalTiles).ToList();
+                tiles[neighbours[3]].possibleModules = tiles[neighbours[3]].possibleModules.Intersect(legalTiles, new Mods()).ToList();
                 tiles[neighbours[3]].CalculateEntropy();
                 if(_tiles.Contains(neighbours[3]))
                     _tiles.UpdatePriority(neighbours[3], tiles[neighbours[3]].entropy);
@@ -218,13 +168,13 @@ public class Grid : MonoBehaviour
     {
         var neighbours = new List<(int x, int y)>();
         
-        if(tiles.ContainsKey((coordinates.x, coordinates.y + 1))) neighbours.Add((coordinates.x, coordinates.y + 1));
+        if(tiles.ContainsKey((coordinates.x, coordinates.y + 1)) && tiles[(coordinates.x, coordinates.y + 1)].finalModuleRules == null) neighbours.Add((coordinates.x, coordinates.y + 1));
         else neighbours.Add((-1, -1));
-        if(tiles.ContainsKey((coordinates.x, coordinates.y - 1))) neighbours.Add((coordinates.x, coordinates.y - 1));
+        if(tiles.ContainsKey((coordinates.x, coordinates.y - 1)) && tiles[(coordinates.x, coordinates.y - 1)].finalModuleRules == null) neighbours.Add((coordinates.x, coordinates.y - 1));
         else neighbours.Add((-1, -1));
-        if(tiles.ContainsKey((coordinates.x + 1, coordinates.y))) neighbours.Add((coordinates.x + 1, coordinates.y));
+        if(tiles.ContainsKey((coordinates.x + 1, coordinates.y)) && tiles[(coordinates.x + 1, coordinates.y)].finalModuleRules == null) neighbours.Add((coordinates.x + 1, coordinates.y));
         else neighbours.Add((-1, -1));
-        if(tiles.ContainsKey((coordinates.x - 1, coordinates.y))) neighbours.Add((coordinates.x - 1, coordinates.y));
+        if(tiles.ContainsKey((coordinates.x - 1, coordinates.y)) && tiles[(coordinates.x - 1, coordinates.y)].finalModuleRules == null) neighbours.Add((coordinates.x - 1, coordinates.y));
         else neighbours.Add((-1, -1));
 
         return neighbours;

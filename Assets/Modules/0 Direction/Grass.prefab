@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modRules:
+    name: Grass
     modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
     propability: 111
 --- !u!1001 &7164061115954285932

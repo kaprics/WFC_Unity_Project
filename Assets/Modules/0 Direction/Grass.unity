@@ -244,10 +244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2663822144703267965, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
-      propertyPath: modRules.propability
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 4610050794188354238, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
       propertyPath: m_Name
       value: Grass (2)
@@ -437,10 +433,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2663822144703267965, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
-      propertyPath: modRules.propability
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 4610050794188354238, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
       propertyPath: m_Name
       value: Grass (3)
@@ -801,10 +793,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2663822144703267965, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
-      propertyPath: modRules.propability
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 4610050794188354238, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
       propertyPath: m_Name
       value: Grass (4)
@@ -1240,10 +1228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2663822144703267965, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
-      propertyPath: modRules.propability
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 4610050794188354238, guid: c16c9bb63fdd1af49bfc27d80548e111, type: 3}
       propertyPath: m_Name
       value: Grass (1)

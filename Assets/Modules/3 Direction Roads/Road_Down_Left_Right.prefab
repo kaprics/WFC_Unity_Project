@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modRules:
+    name: Road_Down_Left_Right
     modRules: {fileID: 11400000, guid: c6deeedf3810bea44b0cd7630af8dfd6, type: 2}
     propability: 1
 --- !u!1001 &4689184992738866928
