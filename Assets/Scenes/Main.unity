@@ -152,10 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473f889807462984099122b2e2d4ed4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilesPerStep: 20
+  startCoordinates: {x: 50, y: 25}
   gridSizeX: 100
   gridSizeY: 50
   tilePrefab: {fileID: 9063935643566990535, guid: bacd5b8bbabfecb458981e0e13ec6970, type: 3}
-  tilesAtATime: 1
 --- !u!4 &1221614048
 Transform:
   m_ObjectHideFlags: 0

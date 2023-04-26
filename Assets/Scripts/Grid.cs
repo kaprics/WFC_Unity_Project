@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class Grid : MonoBehaviour
 {
     [SerializeField] private int tilesPerStep = 1;
+    [SerializeField] private Vector2 startCoordinates;
     [SerializeField] private int gridSizeX;
     [SerializeField] private int gridSizeY;
     [SerializeField] private Tile tilePrefab;
@@ -37,9 +38,7 @@ public class Grid : MonoBehaviour
 
     private IEnumerator Wfc()
     {
-        yield return new WaitForFixedUpdate();
-        var rand = (Random.Range(0, gridSizeX), Random.Range(0, gridSizeY));
-        _tilesPriorityQueue.UpdatePriority(rand, 0);
+        _tilesPriorityQueue.UpdatePriority(((int)startCoordinates.x, (int)startCoordinates.y), 0);
         
         for (var i = 0; i < gridSizeX*gridSizeY; i++)
         {

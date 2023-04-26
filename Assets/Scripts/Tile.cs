@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class Tile : MonoBehaviour
 {
+    [SerializeField] private int seed;
     public (int x, int y) Coordinates;
     public ModuleRules finalModuleRules;
     public List<Mods> possibleModules = new();
@@ -12,6 +13,7 @@ public class Tile : MonoBehaviour
 
     private void Awake()
     {
+        Random.InitState(seed);
         entropy = Mathf.Infinity;
     }
 
