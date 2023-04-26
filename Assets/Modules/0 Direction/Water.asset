@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2bd3552a4c5114f8d98419befbbb93, type: 3}
+  m_Name: Water
+  m_EditorClassIdentifier: 
+  gfx: {fileID: 4610050794188354238, guid: 7ed6b2a77892d4f48aa597700a76dad6, type: 3}
+  up:
+  - name: Grass
+    modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
+    probability: 0
+  - name: Water
+    modRules: {fileID: 11400000}
+    probability: 0
+  down:
+  - name: Grass
+    modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
+    probability: 0
+  - name: Water
+    modRules: {fileID: 11400000}
+    probability: 0
+  left:
+  - name: Grass
+    modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
+    probability: 0
+  - name: Water
+    modRules: {fileID: 11400000}
+    probability: 0
+  right:
+  - name: Grass
+    modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
+    probability: 0
+  - name: Water
+    modRules: {fileID: 11400000}
+    probability: 0
