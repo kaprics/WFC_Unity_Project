@@ -26,7 +26,7 @@ public class Grid : MonoBehaviour
         {
             for (var y = 0; y < gridSizeY; y++)
             {
-                var t = Instantiate(tilePrefab, new Vector3(x, 0, y), Quaternion.identity, transform);
+                var t = Instantiate(tilePrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity, transform);
                 t.Coordinates = (x, y);
                 _tileGrid.Add((x, y), t);
                 _tilesPriorityQueue.Enqueue((x,y), _tileGrid[(x,y)].entropy);

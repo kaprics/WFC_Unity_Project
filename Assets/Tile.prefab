@@ -44,46 +44,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894df0e1253802e4a94e8898be38f94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seed: 4
+  seed: 3
   finalModuleRules: {fileID: 0}
   possibleModules:
-  - name: Grass
-    modRules: {fileID: 11400000, guid: 41031fef37301724b9b5f37f72e93680, type: 2}
-    probability: 50
-  - name: Road_Down
-    modRules: {fileID: 11400000, guid: dd503b836fbcb9a43a69698751c93a37, type: 2}
+  - name: Grass Module
+    modRules: {fileID: 11400000, guid: 057c64dd78416144bbbb08f4989160e7, type: 2}
+    probability: 60
+  - name: Water Module 1
+    modRules: {fileID: 11400000, guid: 302fe6f3536e4c249b2c4f9e06eeaa40, type: 2}
+    probability: 60
+  - name: Water Module 2_1
+    modRules: {fileID: 11400000, guid: 8f09de40d245cca438f482f46ddc47ea, type: 2}
+    probability: 20
+  - name: Water Module 2_2
+    modRules: {fileID: 11400000, guid: ac0c798d42996e14e912490f8e2ae344, type: 2}
+    probability: 20
+  - name: Water Module 2_3
+    modRules: {fileID: 11400000, guid: d1a67db605da2a04bb35be2c01a67729, type: 2}
+    probability: 20
+  - name: Water Module 2_4
+    modRules: {fileID: 11400000, guid: 9396946916dd3c24ebee8b622bef5bbc, type: 2}
+    probability: 20
+  - name: Water Module 3_1
+    modRules: {fileID: 11400000, guid: 05708fbd19b67954491a99188103af4a, type: 2}
     probability: 1
-  - name: Road_Left
-    modRules: {fileID: 11400000, guid: c75b9030310341048b8ef5b73bde324b, type: 2}
+  - name: Water Module 3_2
+    modRules: {fileID: 11400000, guid: 5dc02db6634f1414cbcc7fa45d11d6e8, type: 2}
     probability: 1
-  - name: Road_Right
-    modRules: {fileID: 11400000, guid: 03c11b24ada005046bace615ea9f6a72, type: 2}
+  - name: Water Module 3_3
+    modRules: {fileID: 11400000, guid: f399659181744464a977a3f9d6c2e172, type: 2}
     probability: 1
-  - name: Road_Up
-    modRules: {fileID: 11400000, guid: e8c6ab339b1016f408d763b86fd0d3fa, type: 2}
+  - name: Water Module 3_4
+    modRules: {fileID: 11400000, guid: 4aee646efe2c280478f2bbf0f9213b6b, type: 2}
     probability: 1
-  - name: Road_Left_Down
-    modRules: {fileID: 11400000, guid: 0b180e3f601c59f43a1117f435fa49a2, type: 2}
-    probability: 2
-  - name: Road_Right_Down
-    modRules: {fileID: 11400000, guid: 51cd0422ccfbdb74d9ccac592b8467ea, type: 2}
-    probability: 2
-  - name: Road_Up_Left
-    modRules: {fileID: 11400000, guid: 4f17e5ec71c201e42815e3724e3a3888, type: 2}
-    probability: 2
-  - name: Road_Up_Right
-    modRules: {fileID: 11400000, guid: 62d2392f6a49f4d4ca445c8005d3efd5, type: 2}
-    probability: 2
-  - name: Road_Down_Left_Right
-    modRules: {fileID: 11400000, guid: c6deeedf3810bea44b0cd7630af8dfd6, type: 2}
+  - name: Water Module 4_1
+    modRules: {fileID: 11400000, guid: 53a17eef5ac94c44f90f9c4a8dc29c91, type: 2}
     probability: 1
-  - name: Road_Up_Left_Down
-    modRules: {fileID: 11400000, guid: 0eee908b21c0aab4a955bfd5863b5c66, type: 2}
+  - name: Water Module 4_2
+    modRules: {fileID: 11400000, guid: 6a51c81dfaa38554388a3ee72c6c991d, type: 2}
     probability: 1
-  - name: Road_Up_Left_Right
-    modRules: {fileID: 11400000, guid: dbec99fbbf9a5cb49b350352df5ec03e, type: 2}
+  - name: Water Module 4_3
+    modRules: {fileID: 11400000, guid: faaba44bc0effbf48a1d73a446b715f2, type: 2}
     probability: 1
-  - name: Road_Up_Right_Down
-    modRules: {fileID: 11400000, guid: 03ef75d472faf224e93c93e5e0e27aed, type: 2}
+  - name: Water Module 4_4
+    modRules: {fileID: 11400000, guid: 335d06357d181724598e855e75629101, type: 2}
     probability: 1
   entropy: 0

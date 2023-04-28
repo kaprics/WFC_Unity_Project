@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2bd3552a4c5114f8d98419befbbb93, type: 3}
+  m_Name: Water Module 2_4
+  m_EditorClassIdentifier: 
+  gfx: {fileID: 1568242606997040579, guid: 5247dbb569aa3dc47ad85d147d0c8f7d, type: 3}
+  up:
+  - name: Water Module 3_4
+    modRules: {fileID: 11400000, guid: 4aee646efe2c280478f2bbf0f9213b6b, type: 2}
+    probability: 0
+  - name: Water Module 1
+    modRules: {fileID: 11400000, guid: 302fe6f3536e4c249b2c4f9e06eeaa40, type: 2}
+    probability: 0
+  - name: Water Module 2_2
+    modRules: {fileID: 11400000, guid: ac0c798d42996e14e912490f8e2ae344, type: 2}
+    probability: 0
+  - name: Water Module 3_1
+    modRules: {fileID: 11400000, guid: 05708fbd19b67954491a99188103af4a, type: 2}
+    probability: 0
+  down:
+  - name: Grass Module
+    modRules: {fileID: 11400000, guid: 057c64dd78416144bbbb08f4989160e7, type: 2}
+    probability: 0
+  - name: Water Module 4_2
+    modRules: {fileID: 11400000, guid: 6a51c81dfaa38554388a3ee72c6c991d, type: 2}
+    probability: 0
+  - name: Water Module 2_2
+    modRules: {fileID: 11400000, guid: ac0c798d42996e14e912490f8e2ae344, type: 2}
+    probability: 0
+  - name: Water Module 4_3
+    modRules: {fileID: 11400000, guid: faaba44bc0effbf48a1d73a446b715f2, type: 2}
+    probability: 0
+  left:
+  - name: Water Module 3_2
+    modRules: {fileID: 11400000, guid: 5dc02db6634f1414cbcc7fa45d11d6e8, type: 2}
+    probability: 0
+  - name: Water Module 4_1
+    modRules: {fileID: 11400000, guid: 53a17eef5ac94c44f90f9c4a8dc29c91, type: 2}
+    probability: 0
+  - name: Water Module 2_4
+    modRules: {fileID: 11400000}
+    probability: 0
+  right:
+  - name: Water Module 3_3
+    modRules: {fileID: 11400000, guid: f399659181744464a977a3f9d6c2e172, type: 2}
+    probability: 0
+  - name: Water Module 4_4
+    modRules: {fileID: 11400000, guid: 335d06357d181724598e855e75629101, type: 2}
+    probability: 0
+  - name: Water Module 2_4
+    modRules: {fileID: 11400000}
+    probability: 0
